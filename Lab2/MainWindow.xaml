@@ -1,0 +1,87 @@
+﻿<Window x:Class="Lab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab2"
+        xmlns:viewModel="clr-namespace:Lab2.viewmodel"
+        mc:Ignorable="d"
+        Title="Обратный калькулятор" Height="600" Width="400">
+    <Window.DataContext>
+        <viewModel:ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" Background="LightGray" Padding="3 2">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Загрузить из файла" Command="{Binding FileLoadDataCommand}"/>
+                <MenuItem Header="Сохранить в файл">
+                    <MenuItem Header="Исходные данные" Command="{Binding FileSaveInitialCommand}"/>
+                    <MenuItem Header="Результат" Command="{Binding FileSaveResultCommand}"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Информация">
+                <MenuItem x:Name="AboutItem" Header="Справка"/>
+            </MenuItem>
+        </Menu>
+
+        <Border BorderBrush="Black" BorderThickness="2" Margin="5 30 5 5" Grid.Row="0">
+            <TextBlock Grid.Row="0"
+                       Text="{Binding Result, UpdateSourceTrigger=PropertyChanged}"
+                       FontSize="50"
+                       Margin="5"
+                       TextWrapping="Wrap"/>
+        </Border>
+
+        <StackPanel Grid.Row="1">
+
+            <TextBlock Text="Введите число, для которого будет найдено выражение:"
+                       TextWrapping="Wrap"
+                       Padding="3"
+                       FontSize="16"/>
+
+            <TextBox Text="{Binding Target, Mode=TwoWay}"
+                     Height="40"
+                     FontSize="30"
+                     VerticalContentAlignment="Center"/>
+
+            <Border BorderThickness="0,2,0,0" BorderBrush="Black" Margin="0 5"/>
+
+            <TextBlock Text="Введите число, которое хотите добавить в выражение и нажмите кнопку справа"
+                       TextWrapping="Wrap"
+                       Padding="3"
+                       Margin="0 0 0 5"
+                       FontSize="16"
+                       TextAlignment="Left"/>
+
+            <TextBox Text="{Binding NumToAdd, Mode=TwoWay}"
+                     Margin="0 5"
+                     Height="40"
+                     FontSize="30"
+                     VerticalContentAlignment="Center"/>
+
+            <Button Content="Добавить число"
+                    Command="{Binding AddNumberCommand}"
+                    Margin="0 5"
+                    Height="30"/>
+
+            <Button Content="Удалить число"
+                    Command="{Binding RemoveNumberCommand}"
+                    Margin="0 5"
+                    Height="30"/>
+
+            <Border BorderThickness="0,2,0,0" BorderBrush="Black" Margin="0 5"/>
+        </StackPanel>
+
+        <ListView Grid.Row="2"
+                  ItemsSource="{Binding Numbers}"
+                  FontSize="12"
+                  SelectedIndex="{Binding SelectedNumber}"
+                  Margin="0 5"/>
+    </Grid>
+</Window>
