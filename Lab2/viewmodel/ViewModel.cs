@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Lab2.model;
-using Microsoft.Win32;
 
 namespace Lab2.viewmodel
 {
-    class ViewModel : INotifyPropertyChanged
+    class ViewModel : INotifyPropertyChanged 
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop="")
@@ -25,18 +19,25 @@ namespace Lab2.viewmodel
             }
         }
 
-        private int _target;
+        private int target;
         public int Target
         {
-            get { return _target; }
+            get { return target; }
             set
             {
-                _target = value;
+                target = value;
                 OnPropertyChanged(nameof(Result));
             }
         }
 
-        public string? Result { get => Model.FindExpression(Target, numbers); }
+        public string? Result
+        {
+            get => Model.FindExpression(Target, numbers);
+            set
+            {
+                OnPropertyChanged();
+            }
+        }
 
         private ObservableCollection<int> numbers;
 
@@ -76,6 +77,7 @@ namespace Lab2.viewmodel
             FileLoadDataCommand = new RelayCommand(FileLoadData, () => true);
             FileSaveInitialCommand = new RelayCommand(SaveInitialData, () => numbers.Count > 0);
             FileSaveResultCommand = new RelayCommand(SaveResultData, () => !string.IsNullOrWhiteSpace(Result));
+            ShowAboutCommand = new RelayCommand(ShowAbout, () => true);
         }
 
         public ICommand AddNumberCommand { get; }
@@ -83,11 +85,26 @@ namespace Lab2.viewmodel
         public ICommand FileSaveInitialCommand { get; }
         public ICommand FileSaveResultCommand { get; }
         public ICommand FileLoadDataCommand { get; }
+        public ICommand ShowAboutCommand { get; }
 
-        
+        private void ShowAbout()
+        {
+            string messageBoxText = "Задание выполнил студент группы №424 Губкин Максим.\n" +
+                "Вариант №4\n\n" +
+                "Текст задания: Используя знаки математических операций +, -, *, / из заданных чисел " +
+                "постройте выражение, значение которого равно заданному.";
+
+            string caption = "Справка";
+
+            MessageBoxImage icon = MessageBoxImage.Information;
+
+            MessageBox.Show(messageBoxText, caption, MessageBoxButton.OK, icon);
+        }
+
         private void AddNumber()
         {
             numbers.Add(NumToAdd);
+            OnPropertyChanged(nameof(Result));
         }
 
         private void RemoveNumber()
@@ -95,6 +112,7 @@ namespace Lab2.viewmodel
             if (SelectedNumberIndex != -1)
             {
                 numbers.RemoveAt(SelectedNumberIndex);
+                OnPropertyChanged(nameof(Result));
             } 
             else
             {
@@ -163,6 +181,12 @@ namespace Lab2.viewmodel
                     if (int.TryParse(numberString, out int number))
                     {
                         numbers.Add(number);
+                    }
+                    else
+                    {
+                        numbers.Clear();
+                        MessageBox.Show("Файл содержит некорректные данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
                     }
                 }
             }

@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\12\\source\\repos\\Lab2\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|C:\\Users\\12\\source\\repos\\Lab2\\lab2\\viewmodel\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|solutionrelative:lab2\\viewmodel\\viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|c:\\users\\12\\source\\repos\\lab2\\lab2\\viewmodel\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|solutionrelative:lab2\\viewmodel\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|c:\\users\\12\\source\\repos\\lab2\\lab2\\model\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|solutionrelative:lab2\\model\\model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|c:\\users\\12\\source\\repos\\lab2\\lab2\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A0E6B39E-9757-4DF1-9203-ED43532DC2CF}|Lab2\\Lab2.csproj|solutionrelative:lab2\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A85D4ED-51AB-4593-9276-08986269F52F}|UnitTest\\UnitTest.csproj|c:\\users\\12\\source\\repos\\lab2\\unittest\\unittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A85D4ED-51AB-4593-9276-08986269F52F}|UnitTest\\UnitTest.csproj|solutionrelative:unittest\\unittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,75 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\viewmodel\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "Lab2\\viewmodel\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\viewmodel\\RelayCommand.cs",
+              "RelativeToolTip": "Lab2\\viewmodel\\RelayCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T08:32:12.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Lab2\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\MainWindow.xaml",
+              "RelativeToolTip": "Lab2\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-19T08:30:54.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\12\\source\\repos\\Lab2\\UnitTest\\UnitTest.cs",
+              "RelativeDocumentMoniker": "UnitTest\\UnitTest.cs",
+              "ToolTip": "C:\\Users\\12\\source\\repos\\Lab2\\UnitTest\\UnitTest.cs",
+              "RelativeToolTip": "UnitTest\\UnitTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T08:06:32.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\viewmodel\\ViewModel.cs",
+              "RelativeDocumentMoniker": "Lab2\\viewmodel\\ViewModel.cs",
+              "ToolTip": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\viewmodel\\ViewModel.cs",
+              "RelativeToolTip": "Lab2\\viewmodel\\ViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T18:35:54.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Model.cs",
+              "DocumentMoniker": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\model\\Model.cs",
+              "RelativeDocumentMoniker": "Lab2\\model\\Model.cs",
+              "ToolTip": "C:\\Users\\12\\source\\repos\\Lab2\\Lab2\\model\\Model.cs",
+              "RelativeToolTip": "Lab2\\model\\Model.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T06:57:36.031Z",
+              "EditorCaption": ""
             }
           ]
         }

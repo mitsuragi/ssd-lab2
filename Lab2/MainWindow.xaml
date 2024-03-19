@@ -26,7 +26,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Информация">
-                <MenuItem x:Name="AboutItem" Header="Справка"/>
+                <MenuItem Header="Справка" Command="{Binding ShowAboutCommand}"/>
             </MenuItem>
         </Menu>
 
@@ -45,21 +45,21 @@
                        Padding="3"
                        FontSize="16"/>
 
-            <TextBox Text="{Binding Target, Mode=TwoWay}"
+            <TextBox Text="{Binding Target, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Height="40"
                      FontSize="30"
                      VerticalContentAlignment="Center"/>
 
             <Border BorderThickness="0,2,0,0" BorderBrush="Black" Margin="0 5"/>
 
-            <TextBlock Text="Введите число, которое хотите добавить в выражение и нажмите кнопку справа"
+            <TextBlock Text="Введите число, которое хотите добавить в выражение и нажмите соответствующую кнопку снизу"
                        TextWrapping="Wrap"
                        Padding="3"
                        Margin="0 0 0 5"
                        FontSize="16"
                        TextAlignment="Left"/>
 
-            <TextBox Text="{Binding NumToAdd, Mode=TwoWay}"
+            <TextBox Text="{Binding NumToAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Margin="0 5"
                      Height="40"
                      FontSize="30"
@@ -79,9 +79,9 @@
         </StackPanel>
 
         <ListView Grid.Row="2"
-                  ItemsSource="{Binding Numbers}"
+                  ItemsSource="{Binding Numbers, UpdateSourceTrigger=PropertyChanged}"
                   FontSize="12"
-                  SelectedIndex="{Binding SelectedNumber}"
+                  SelectedIndex="{Binding SelectedNumberIndex}"
                   Margin="0 5"/>
     </Grid>
 </Window>

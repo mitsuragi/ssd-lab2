@@ -1,68 +1,77 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace Lab2.model
 {
-    static class Model
+    public static class Model
     {
-        public static string? FindExpression(int target, ObservableCollection<int> numbers, string currentExpression = "", int currentValue = 0, int index = 0)
+        public static string? FindExpression(int target, ObservableCollection<int> numbers)
         {
-            if (index == numbers.Count)
+            HashSet<int> visited = new HashSet<int>();
+            Queue<(int, string)> expressions = new Queue<(int, string)>();
+
+            foreach (int number in numbers)
             {
-                if (currentValue == target)
+                expressions.Enqueue((number, number.ToString()));
+            }
+
+            while (expressions.Count > 0)
+            {
+                var (result, expression) = expressions.Dequeue();
+
+                if (result == target)
                 {
-                    return currentExpression;
+                    return expression;
                 }
-                else
+
+                if (visited.Contains(result))
                 {
-                    return null;
+                    continue;
+                }
+
+                visited.Add(result);
+
+                foreach (int num in numbers)
+                {
+                    int newResult;
+                    string newExpression;
+
+                    // Division
+                    if (num != 0)
+                    {
+                        newResult = result / num;
+                        newExpression = expression.Length > 1 ? $"({expression}) / {num}" : $"{expression} / {num}";
+                        if (result % num == 0 && !visited.Contains(newResult))
+                        {
+                            expressions.Enqueue((newResult, newExpression));
+                        }
+                    }
+
+                    // Addition
+                    newResult = result + num;
+                    newExpression = expression.Length > 1 ? $"({expression}) + {num}" : $"{expression} + {num}";
+                    if (!visited.Contains(newResult))
+                    {
+                        expressions.Enqueue((newResult, newExpression));
+                    }
+
+                    // Subtraction
+                    newResult = result - num;
+                    newExpression = expression.Length > 1 ? $"({expression}) - {num}" : $"{expression} - {num}";
+                    if (!visited.Contains(newResult))
+                    {
+                        expressions.Enqueue((newResult, newExpression));
+                    }
+
+                    // Multiplication
+                    newResult = result * num;
+                    newExpression = expression.Length > 1 ? $"({expression}) * {num}" : $"{expression} * {num}";
+                    if (!visited.Contains(newResult))
+                    {
+                        expressions.Enqueue((newResult, newExpression));
+                    }
                 }
             }
 
-            int num = numbers[index];
-
-            // попытка добавить число
-            string? exprWithAddition;
-            if (currentExpression == "")
-            {
-                exprWithAddition = FindExpression(target, numbers, $"{num}", currentValue + num, index + 1);
-            }
-            else
-            {
-                exprWithAddition = FindExpression(target, numbers, $"{currentExpression}+{num}", currentValue + num, index + 1);
-            }
-            if (exprWithAddition != null)
-                return exprWithAddition;
-
-            // попытка вычесть число
-            string? exprWithSubtraction = FindExpression(target, numbers, $"{currentExpression}-{num}", currentValue - num, index + 1);
-            if (exprWithSubtraction != null)
-                return exprWithSubtraction;
-
-            // попытка умножить число
-            if (currentExpression != "")
-            {
-                string? exprWithMultiplication = FindExpression(target, numbers, $"({currentExpression})*{num}", currentValue * num, index + 1);
-                if (exprWithMultiplication != null)
-                    return exprWithMultiplication;
-            }
-
-            // попытка разделить число (если оно не ноль)
-            if (num != 0 && currentValue % num == 0 && currentExpression != "")
-            {
-                string? exprWithDivision = FindExpression(target, numbers, $"({currentExpression})/{num}", currentValue / num, index + 1);
-                if (exprWithDivision != null)
-                    return exprWithDivision;
-            }
-
-            // Если не найдено решения
             return null;
         }
     }
